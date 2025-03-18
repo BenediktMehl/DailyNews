@@ -1,0 +1,5 @@
+{
+  "db_path": "data/news.db",
+  "sources_path": "config/sources.json",
+  "whatsapp_path": "config/whatsapp.json"
+}

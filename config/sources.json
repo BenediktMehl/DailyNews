@@ -1,0 +1,56 @@
+{
+  "developer": [
+    {
+      "name": "GitHub Blog",
+      "url": "https://github.blog/feed/",
+      "type": "rss"
+    },
+    {
+      "name": "HackerNews",
+      "url": "https://news.ycombinator.com/rss",
+      "type": "rss"
+    },
+    {
+      "name": "Dev.to",
+      "url": "https://dev.to/feed",
+      "type": "rss"
+    },
+    {
+      "name": "Stack Overflow Blog",
+      "url": "https://stackoverflow.blog/feed/",
+      "type": "rss"
+    },
+    {
+      "name": "InfoQ",
+      "url": "https://feed.infoq.com/",
+      "type": "rss"
+    }
+  ],
+  "mainstream": [
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "type": "rss"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com/rss/index.xml",
+      "type": "rss"
+    },
+    {
+      "name": "Wired",
+      "url": "https://www.wired.com/feed/rss",
+      "type": "rss"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://feeds.arstechnica.com/arstechnica/index",
+      "type": "rss"
+    },
+    {
+      "name": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/feed/",
+      "type": "rss"
+    }
+  ]
+}
