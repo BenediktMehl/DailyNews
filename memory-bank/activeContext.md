@@ -1,7 +1,7 @@
 # Active Context
 
 ## Current Focus
-- Implementing news aggregation from the Hacker News API.
+- Fetching content from URLs is now functional.
 - Structuring the codebase with a superclass for fetching news and a child class for API feeds.
 - Developing a new class to retrieve plaintext content from URLs using OpenAI API if necessary.
 
@@ -12,6 +12,6 @@
 - Planned the integration of the Hacker News RSS feed.
 
 ## Next Steps
+- Implement functionality to summarize the fetched content into a concise news topic.
 - Integrate the news fetching with the Telegram message sending function.
-- Implement the `NewsContentFetcher` class to retrieve plaintext content from URLs.
 - Test the `NewsContentFetcher` class to ensure it retrieves content correctly.
