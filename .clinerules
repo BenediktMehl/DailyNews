@@ -8,3 +8,7 @@
 - Use descriptive commit messages to explain changes made to the codebase.
 - Avoid code duplication by using functions and modules.
 - Regularly refactor code to improve readability and performance.
+
+## Python Execution Guidelines
+- Before executing any Python scripts, activate the virtual environment using `source bin/activate`. This only needs to be done once before the first command.
+- Use `python3` and `pip3` for Python script execution and package installation.
