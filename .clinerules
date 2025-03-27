@@ -11,4 +11,5 @@
 
 ## Python Execution Guidelines
 - Before executing any Python scripts, activate the virtual environment using `source bin/activate`. This only needs to be done once before the first command.
+- Before implementing a new library, check if it's already installed. If not, install it. Also, check if there are existing libraries that could be used instead of the new library.
 - Use `python3` and `pip3` for Python script execution and package installation.
