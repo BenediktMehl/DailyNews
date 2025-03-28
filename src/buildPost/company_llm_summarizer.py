@@ -1,3 +1,4 @@
+import logging
 import openai
 import os
 from dotenv import load_dotenv
@@ -5,14 +6,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def create_news_summary(text: str) -> str:
+    logging.basicConfig(level=logging.INFO)
+    logging.info("Fetching API key and base URL from environment variables")
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_API_URL")
 
+    logging.info("Initializing OpenAI client")
     client = openai.OpenAI(
         api_key=api_key,
         base_url=base_url
     )
 
+    logging.info("Creating chat completion request")
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -23,4 +28,6 @@ def create_news_summary(text: str) -> str:
         ]
     )
 
-    return response.choices[0].message.content.strip()
+    summary = response.choices[0].message.content.strip()
+    logging.info(f"Received summary: {summary}")
+    return summary
