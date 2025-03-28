@@ -11,31 +11,31 @@ class NewsPostOrchestrator:
 
     def create_post_from_top_news(self, api_url):
         logging.basicConfig(level=logging.INFO)
-        logging.info("Fetching top 3 news items")
+        logging.info("Fetch: Top 3 news items")
         top_news = fetch_news(api_url)[:3]
-        logging.info("Importing requests module")
         summaries = []
         urls = []
 
         for news_id in top_news:
             news_item_url = f"https://hacker-news.firebaseio.com/v0/item/{news_id}.json?print=pretty"
-            logging.info(f"Fetching news item details for ID: {news_id}")
+            logging.info(f"Fetch: News item details for ID: {news_id}")
             news_item = requests.get(news_item_url).json()
-            logging.info(f"Fetched news item: {news_item}")
-            logging.info(f"Creating summary for news item: {news_item.get('title', '')}")
+            logging.info(f"Fetch: News item fetched: {{'by': {news_item['by']}, 'descendants': {news_item['descendants']}, 'id': {news_item['id']}, 'score': {news_item['score']}, 'time': {news_item['time']}, 'title': {news_item['title']}, 'type': {news_item['type']}, 'url': {news_item['url']}}}")
+            logging.info(f"AI Interaction: Creating summary for news item: {news_item.get('title', '')}")
             summary = create_news_summary(news_item.get('title', ''))
-            logging.info(f"Created summary: {summary}")
-            if summary != 'null':
+            if summary is None:
+                logging.warning(f"AI Interaction: Failed to create summary for news item: {news_item.get('title', '')}")
+            else:
+                logging.info(f"AI Interaction: Created summary: {summary}")
                 summaries.append(summary)
                 urls.append(news_item.get('url', news_item_url))
 
-        # Create the news post
-        logging.info("Creating news post")
+        logging.info("AI Interaction: Creating news post")
         news_post = create_news_post(summaries, urls)
-        logging.info("News post created successfully")
-        logging.info("Sending news post to Telegram")
+        logging.info("AI Interaction: News post created successfully")
+        logging.info(f"Resulting Post: {news_post}")
+        logging.info("Fetch: Sending news post to Telegram")
         asyncio.run(send_telegram_message(news_post))
-        logging.info("News post sent to Telegram successfully")
 
 
 if __name__ == "__main__":

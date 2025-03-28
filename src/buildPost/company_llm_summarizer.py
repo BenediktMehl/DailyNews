@@ -7,17 +7,17 @@ load_dotenv()
 
 def create_news_summary(text: str) -> str:
     logging.basicConfig(level=logging.INFO)
-    logging.info("Fetching API key and base URL from environment variables")
+    logging.info("Fetch: Fetching API key and base URL from environment variables")
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_API_URL")
 
-    logging.info("Initializing OpenAI client")
+    logging.info("AI Interaction: Initializing OpenAI client")
     client = openai.OpenAI(
         api_key=api_key,
         base_url=base_url
     )
 
-    logging.info("Creating chat completion request")
+    logging.info("AI Interaction: Creating chat completion request")
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -29,5 +29,10 @@ def create_news_summary(text: str) -> str:
     )
 
     summary = response.choices[0].message.content.strip()
-    logging.info(f"Received summary: {summary}")
+    
+    if summary == 'null':
+        logging.warning(f"AI Interaction: Failed to create summary for text: {text}")
+        return None
+
+    logging.info(f"AI Interaction: Received summary: {summary}")
     return summary
