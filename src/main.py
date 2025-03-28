@@ -1,4 +1,5 @@
 import logging
+import asyncio
 from send.send_telegram_message import send_telegram_message
 import requests
 from fetchContent.rss_news_fetcher import fetch_news
@@ -26,14 +27,14 @@ class NewsPostOrchestrator:
             logging.info(f"Created summary: {summary}")
             if summary != 'null':
                 summaries.append(summary)
-                urls.append(news_item_url)
+                urls.append(news_item.get('url', news_item_url))
 
         # Create the news post
         logging.info("Creating news post")
         news_post = create_news_post(summaries, urls)
         logging.info("News post created successfully")
         logging.info("Sending news post to Telegram")
-        send_telegram_message(news_post)
+        asyncio.run(send_telegram_message(news_post))
         logging.info("News post sent to Telegram successfully")
 
 
