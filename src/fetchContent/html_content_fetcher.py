@@ -1,9 +1,10 @@
 from playwright.sync_api import sync_playwright
-
+import logging
 
 class HTMLContentFetcher:
     def get_html_content(self, url):
         raw_text = self._fetch_raw_text(url)
+        logging.info(f"Fetch: Fetched raw text: {raw_text}")
         return self._clean_text(raw_text)
 
     def _fetch_raw_text(self, url):
@@ -19,6 +20,5 @@ class HTMLContentFetcher:
     def _clean_text(self, text):
         if text is None:
             return ""
-        # Remove extra whitespace and newlines
         cleaned_text = ' '.join(text.split())
         return cleaned_text
