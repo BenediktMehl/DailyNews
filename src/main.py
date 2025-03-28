@@ -12,7 +12,7 @@ class NewsPostOrchestrator:
     def create_post_from_top_news(self, api_url):
         logging.basicConfig(level=logging.INFO)
         logging.info("Fetch: Top 3 news items")
-        top_news = fetch_news(api_url)[:3]
+        top_news = fetch_top_news()
         summaries = []
         urls = []
 
