@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def summarize_content_with_company_llm(text: str) -> str:
+def create_news_summary(text: str) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_API_URL")
 
