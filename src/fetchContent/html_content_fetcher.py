@@ -3,7 +3,7 @@ import logging
 from time import sleep
 
 
-def fetch_html_contents(news_items):
+def fetch_html_contents(news_items, number_of_news=-1):
     contents = list()
     for item in news_items:
         url = item['url']
@@ -14,6 +14,9 @@ def fetch_html_contents(news_items):
             continue
         cleaned_text = _clean_text(raw_text)
         contents.append((f"Title: {item['title']}\nContent:\n{cleaned_text}"))
+        number_of_news -= 1
+        if number_of_news == 0:
+            break
     return contents
 
 

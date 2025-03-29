@@ -12,8 +12,8 @@ class NewsPostOrchestrator:
     def create_post_from_top_news(self):
         logging.basicConfig(level=logging.INFO)
         
-        top_news = fetch_top_news(3)
-        contents = fetch_html_contents(top_news)
+        top_news = fetch_top_news()
+        contents = fetch_html_contents(top_news, 3)
         #summaries = create_news_summaries(contents)
         #news_post = create_news_post(summaries, top_news)
 
