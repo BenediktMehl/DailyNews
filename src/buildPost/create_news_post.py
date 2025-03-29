@@ -12,7 +12,7 @@ def create_news_post(news_topics, top_news) -> str:
     formatted_post = template
 
     news_topics_str = "\n\n".join(f"{choose_icon(topic)} {topic} {top_news[i]['url']}" for i, topic in enumerate(news_topics))
-    news_topics_str = f"\n\n{news_topics_str}\n\n"
+    news_topics_str = f"\n{news_topics_str}\n"
     formatted_post = formatted_post.replace("[News Topics]", news_topics_str)
 
     logging.info(f"AI Interaction: Post formatted successfully: {formatted_post}")
