@@ -14,10 +14,10 @@ class NewsPostOrchestrator:
         
         top_news = fetch_top_news(3)
         contents = fetch_html_contents(top_news)
-        summaries = create_news_summaries(contents)
-        news_post = create_news_post(summaries, top_news)
+        #summaries = create_news_summaries(contents)
+        #news_post = create_news_post(summaries, top_news)
 
-        asyncio.run(send_telegram_message(news_post))
+        #asyncio.run(send_telegram_message(news_post))
 
 if __name__ == "__main__":
     orchestrator = NewsPostOrchestrator()
