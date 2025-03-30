@@ -1,4 +1,5 @@
 import logging
+import re
 import openai
 import os
 from dotenv import load_dotenv
@@ -34,17 +35,39 @@ def create_news_summary(text: str) -> str:
         messages=[
             {
                 "role": "user",
-                "content": f"Summarize the following text in maximum 2-3 sentences like news agencies would do. Have one headline sentence and then one to three sentences that give some context and detail like this: '*New Study Suggests Preschoolers Exhibit Advanced Reasoning Skills*  The study indicates that preschool-aged children may possess more sophisticated reasoning abilities than previously recognized. The findings could have implications for early childhood education strategies.' Dont put any links or references into the summary. If the given text does not contain a summarizable text, simply return 'null'. This is the text: {text}"
+                "content": f"""
+                                Summarize the following text in maximum 2-3 sentences like news agencies would do. 
+                                Have a title, one headline sentence and then one to three sentences that give some context and detail like this: 
+                                {{
+                                    "headline": "Criticism of additional US tariffs on imported cars",
+                                    "entry_sentence": "The USA has announced additional tariffs of 25% on car imports."
+                                    "detail": "They are to come into force on April 2 and apply to all cars not produced in the USA."
+                                }}
+                                Dont put any links or references into the summary. If the given text does not contain a summarizable text, simply return 'null'. 
+                                This is the text: {text}
+                            """
             }
         ]
     )
 
-    summary = response.choices[0].message.content.strip()
-
-    if summary == 'null':
-        logging.warning(f"AI Interaction: Failed to create summary for text: {text}")
+    try:
+        json = response.choices[0].message.content.strip()
+        if json == "null":
+            return None
+        json = json.replace("'", '"')
+        json = json.replace("“", '"').replace("”", '"')
+        json = json.replace("‘", '"').replace("’", '"')
+        json_response = eval(json)
+        if not isinstance(json_response, dict):
+            logging.warning(f"AI Interaction: Response is not a valid JSON object: {json_response}")
+            return None
+        if "headline" not in json_response or "entry_sentence" not in json_response or "detail" not in json_response:
+            logging.warning(f"AI Interaction: JSON object does not contain required fields: {json_response}")
+            return None
+        return json_response
+    except Exception as e:
+        logging.error(f"AI Interaction: Failed to parse JSON: {e}")
         return None
 
-    logging.info(f"AI Interaction: Received summary: {summary}")
 
-    return summary
+
