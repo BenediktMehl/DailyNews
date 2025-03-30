@@ -40,8 +40,9 @@ def create_image(news_topics):
     draw.text((left_padding, top_padding + 80), today_date, fill="white", font=date_font)
 
     # Add news topics dynamically using Pilmoji for colored emojis
-    headline_font = ImageFont.truetype("assets/arial.ttf", 45)  # Increased font size for news topics
-    max_width = 40  # Maximum number of characters per line
+    headline_font = ImageFont.truetype("assets/arial.ttf", 50)  # Increased font size for news topics
+    max_width = 30  # Maximum number of characters per line
+    text_start_offset = left_padding + 100  # Offset for text after the icon (adjust as needed)
 
     with Pilmoji(img) as pilmoji:
         for i, topic in enumerate(news_topics):
@@ -52,10 +53,18 @@ def create_image(news_topics):
             # Wrap the headline text
             wrapped_headline = textwrap.fill(headline, width=max_width)
 
-            # Render the emoji and wrapped headline
+            # Render the icon
             pilmoji.text(
-                (left_padding, top_padding + 140 + i * 160),  # Adjusted vertical spacing for larger text
-                f"{icon} {wrapped_headline}",
+                (left_padding, top_padding + 400 + i * 160),  # Position for the icon
+                icon,
+                fill="white",
+                font=headline_font
+            )
+
+            # Render the wrapped headline, starting after the icon
+            pilmoji.text(
+                (text_start_offset, top_padding + 400 + i * 160),  # Position for the text
+                wrapped_headline,
                 fill="white",
                 font=headline_font
             )

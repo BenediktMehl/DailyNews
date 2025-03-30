@@ -4,7 +4,7 @@ import os
 
 class TestNewsImageCreation(unittest.TestCase):
     def test_image_creation(self):
-        output_path = 'test_output_image.png'
+        output_path = 'src/buildPost/test_output_image.png'
         news_topics = [
             {
                 "headline": "Latest updates on climate change and impact",
