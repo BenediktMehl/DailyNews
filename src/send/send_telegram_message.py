@@ -17,8 +17,7 @@ async def send_telegram_message(news_post):
 
     # Send the image
     logging.info("AI Interaction: Sending image to Telegram")
-    with open(image, 'rb') as img_file:  # Open the image file in binary mode
-        await bot.send_photo(chat_id=user_id, photo=img_file)
+    await bot.send_photo(chat_id=user_id, photo=image)
     logging.info("AI Interaction: Image sent to Telegram successfully")
 
     # Send the text
