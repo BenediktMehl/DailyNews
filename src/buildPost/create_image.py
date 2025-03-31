@@ -65,7 +65,7 @@ def create_image(news_topics, output_dir):
 
     img.paste(
         logo,
-        (img.width - logo.width - padding + 40, img.height - logo.height - padding + 20),
+        (img.width - logo.width - padding + 40, img.height - logo.height - padding + 40),
         logo
     )
 
