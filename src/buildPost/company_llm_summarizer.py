@@ -6,18 +6,27 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def create_news_summaries(texts: list) -> list:
-    summaries = []
-    for text in texts:
-        summary = create_news_summary(text)
-        if summary is None:
-            logging.warning(f"AI Interaction: Failed to create summary for text: {text}")
-        else:
-            logging.info(f"AI Interaction: Created summary: {summary}")
-            summaries.append(summary)
-    return summaries
 
-def create_news_summary(text: str) -> str:
+def create_news_summaries(texts: list) -> list:
+    news_topics = []
+    number_of_summaries = 0
+    for text in texts:
+        if len(text) < 1000 or len(text) > 15000:
+            logging.warning(f"AI Interaction: Text length is not valid: {len(text)} characters")
+            continue
+        if number_of_summaries >= 3:
+            break
+        topic = create_news_topic(text)
+        if topic is None:
+            logging.warning(f"AI Interaction: Failed to create topic")
+        else:
+            logging.info(f"AI Interaction: Created topic: {topic}")
+            number_of_summaries += 1
+            news_topics.append(topic)
+    return news_topics
+
+
+def create_news_topic(text: str) -> str:
     logging.basicConfig(level=logging.INFO)
     logging.info("Fetch: Fetching API key and base URL from environment variables")
     api_key = os.getenv("OPENAI_API_KEY")
@@ -50,8 +59,11 @@ def create_news_summary(text: str) -> str:
         ]
     )
 
+
     try:
         json = response.choices[0].message.content.strip()
+        logging.info(f"AI Interaction: Received response from OpenAI API: {json}")
+
         if json == "null":
             return None
         json = json.replace("'", '"')
@@ -68,6 +80,3 @@ def create_news_summary(text: str) -> str:
     except Exception as e:
         logging.error(f"AI Interaction: Failed to parse JSON: {e}")
         return None
-
-
-

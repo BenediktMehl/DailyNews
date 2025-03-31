@@ -1,7 +1,11 @@
 Good morning from the Developer News Editorial Team ☕
 Here are the news for the morning:
 
-🎨 *Sweden has officially designated the demoscene as a national UNESCO heritage, following a successful application.* This recognition aligns with an ongoing international initiative to elevate the demoscene as a global cultural heritage, celebrating its unique digital subculture that has persisted across technological changes. https://www.goto80.com/the-demoscene-as-a-unesco-heritage-in-sweden
+🎨 *Sweden has officially designated the demoscene as a national UNESCO heritage site following a successful application.* This move is part of the broader Art of Coding initiative aimed at recognizing the demoscene as a global heritage, celebrating its unique cultural significance that spans decades within the digital creative subculture. https://www.goto80.com/the-demoscene-as-a-unesco-heritage-in-sweden
+
+🔒 *Reports have emerged alleging that Oracle is attempting to downplay a serious cybersecurity incident affecting its cloud services.* Despite denials from the company, evidence from a threat actor suggests that customer data was compromised, leading to calls for greater transparency from Oracle regarding the breach and its impacts on customers. https://composio.dev/blog/gemini-2-5-pro-vs-claude-3-7-sonnet-coding-comparison/
+
+🎮 *A recent social media post sparked debate over the practice of downloading video games from radio broadcasts in the 1980s.* Listeners would record audio transmissions onto cassette tapes, which could then be played on home computers. This method faded with technological advancements, leaving it as a nostalgic memory for those who experienced it. https://doublepulsar.com/oracle-attempt-to-hide-serious-cybersecurity-incident-from-customers-in-oracle-saas-service-9231c8daff4a
 
 Have a great day!
 Don't miss a message from us, click the bell 🔔

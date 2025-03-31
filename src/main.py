@@ -16,11 +16,10 @@ class NewsPostOrchestrator:
         logging.basicConfig(level=logging.INFO)
         
         top_news = fetch_top_news()
-        contents = fetch_html_contents(top_news, 3)
+        contents = fetch_html_contents(top_news, 5)
         summaries = create_news_summaries(contents)
         choose_icons(summaries)
-        if os.path.exists(dir):
-            os.rmdir(dir)
+        
         os.makedirs(dir, exist_ok=True)
 
         create_news_post(summaries, top_news, dir)
@@ -30,10 +29,10 @@ class NewsPostOrchestrator:
         today_date_formatted = datetime.now().strftime("%Y-%m-%d")
         dir = f"posts/{today_date_formatted}"
 
-        #self.create_post_from_top_news(dir)
+        self.create_post_from_top_news(dir)
         asyncio.run(send_post_to_telegram(dir))
         
 if __name__ == "__main__":
     orchestrator = NewsPostOrchestrator()
     orchestrator.send_and_create_post()
-    
+
