@@ -1,10 +1,14 @@
-from create_image import create_image 
+from create_image import create_image
 import unittest
 import os
+from datetime import datetime
+from PIL import Image
 
 class TestNewsImageCreation(unittest.TestCase):
     def test_image_creation(self):
-        output_path = 'src/buildPost/test_output_image.png'
+        output_dir = f"posts/test-10-10-2010"
+        output_path = f"{output_dir}/image.png"
+
         news_topics = [
             {
                 "headline": "Latest updates on climate change and impact",
@@ -20,18 +24,17 @@ class TestNewsImageCreation(unittest.TestCase):
             }
         ]
 
+        os.makedirs(output_dir, exist_ok=True)
 
-        # Create the image
-        img = create_image(news_topics)
-        
-        # Save the image to a file
-        img.save(output_path)
+        create_image(news_topics, output_dir)
 
-        # Check if the image exists
-        self.assertTrue(os.path.exists(output_path))
-        
-        # Check the image size
-        self.assertEqual(img.size, (1024, 1024))
+        self.assertTrue(os.path.exists(output_path), "The image file was not created.")
+
+        with Image.open(output_path) as img:
+            # Check the image size
+            self.assertEqual(img.size, (1024, 1024), "The image size is incorrect.")
+
+            self.assertEqual(img.mode, "RGB", "The image mode is not RGB.")
 
 if __name__ == '__main__':
     unittest.main()

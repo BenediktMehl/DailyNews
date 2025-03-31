@@ -2,6 +2,7 @@ import logging
 from telegram import Bot  # type: ignore
 from dotenv import load_dotenv  # type: ignore
 import os
+from datetime import datetime
 
 load_dotenv()
 
@@ -9,8 +10,19 @@ bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
 user_id = os.getenv('USER_ID')
 
 
-async def send_telegram_message(news_post):
-    image, text = news_post
+async def send_post_to_telegram(input_dir):
+    file_text_path = f"{input_dir}/text.txt"
+    with open(file_text_path, 'r') as file:
+        text = file.read()
+
+    file_image_path = f"{input_dir}/image.png"
+    with open(file_image_path, 'rb') as image:
+        image_data = image.read()
+
+    await send_telegram_message(image_data, text)
+
+
+async def send_telegram_message(image, text):
     logging.basicConfig(level=logging.INFO)
     logging.info("Fetch: Initializing Telegram Bot")
     bot = Bot(bot_token)

@@ -4,7 +4,7 @@ from pilmoji import Pilmoji
 import textwrap  # Import textwrap for wrapping text
 
 
-def create_image(news_topics):
+def create_image(news_topics, output_dir):
     logo_path = 'assets/logo_no_background.png'
 
     # Load the logo
@@ -84,4 +84,7 @@ def create_image(news_topics):
         logo
     )
 
-    return img
+    # Save the image
+    file_path = f"{output_dir}/image.png"
+    img.save(file_path)
+    print(f"Image saved successfully to {file_path}")
