@@ -1,4 +1,4 @@
-from company_llm_summarizer import create_news_topic
+from buildPost.create_news_topics import create_news_topic
 import unittest
 
 

@@ -1,5 +1,5 @@
 import logging
-import re
+import json
 import openai
 import os
 from dotenv import load_dotenv
@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def create_news_summaries(texts: list) -> list:
+def create_news_topics(texts: list) -> list:
     news_topics = []
     number_of_summaries = 0
     for text in texts:
@@ -60,20 +60,15 @@ def create_news_topic(text: str) -> str:
         ]
     )
 
-
     try:
-        json = response.choices[0].message.content.strip()
-        logging.info(f"AI Interaction: Received response from OpenAI API: {json}")
+        string_response = response.choices[0].message.content.strip()
+        logging.info(f"AI Interaction: Received response from OpenAI API: {string_response}")
 
-        if json == "null":
+        if string_response == "null":
             return None
-        json = json.replace("'", '"')
-        json = json.replace("“", '"').replace("”", '"')
-        json = json.replace("‘", '"').replace("’", '"')
-        json_response = eval(json)
-        if not isinstance(json_response, dict):
-            logging.warning(f"AI Interaction: Response is not a valid JSON object: {json_response}")
-            return None
+
+        json_response = json.loads(string_response.strip('```json').strip('```').strip())
+
         if "headline" not in json_response or "entry_sentence" not in json_response or "detail" not in json_response:
             logging.warning(f"AI Interaction: JSON object does not contain required fields: {json_response}")
             return None
