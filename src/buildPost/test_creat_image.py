@@ -32,7 +32,7 @@ class TestNewsImageCreation(unittest.TestCase):
 
         with Image.open(output_path) as img:
             # Check the image size
-            self.assertEqual(img.size, (1024, 1024), "The image size is incorrect.")
+            self.assertEqual(img.size, (1024, 1064), "The image size is incorrect.")
 
             self.assertEqual(img.mode, "RGB", "The image mode is not RGB.")
 
