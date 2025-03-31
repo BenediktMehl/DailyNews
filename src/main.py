@@ -5,7 +5,7 @@ from fetchContent.llm_icon_chooser import choose_icons
 from send.send_telegram_message import send_post_to_telegram
 from fetchContent.rss_news_fetcher import fetch_top_news
 from fetchContent.html_content_fetcher import fetch_html_contents
-from buildPost.create_news_topics import create_news_topics
+from fetchContent.create_news_topics import create_news_topics
 from buildPost.create_news_post import create_news_post
 from buildPost.create_image import create_image
 from datetime import datetime

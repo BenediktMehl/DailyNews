@@ -1,4 +1,4 @@
-from buildPost.create_news_topics import create_news_topic
+from fetchContent.create_news_topics import create_news_topic
 import unittest
 
 
