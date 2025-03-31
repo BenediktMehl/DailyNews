@@ -28,7 +28,7 @@ class NewsPostOrchestrator:
         with open(topics_file_path, "w") as json_file:
             json.dump(topics, json_file, indent=4)
 
-    def create_post(self, dir):
+    def create_post_and_image(self, dir):
         topics_file_path = f"{dir}/topics.json"
         with open(topics_file_path, "r") as json_file:
             topics = json.load(json_file)
@@ -40,8 +40,8 @@ class NewsPostOrchestrator:
         today_date_formatted = datetime.now().strftime("%Y-%m-%d")
         dir = f"posts/{today_date_formatted}"
 
-        self.create_topics(dir)
-        self.create_post(dir)
+        #self.create_topics(dir)
+        self.create_post_and_image(dir)
         asyncio.run(send_post_to_telegram(dir))
 
 
