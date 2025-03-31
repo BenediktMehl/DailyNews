@@ -45,8 +45,9 @@ def create_news_topic(text: str) -> str:
             {
                 "role": "user",
                 "content": f"""
-                                Summarize the following text in maximum 2-3 sentences like news agencies would do. 
-                                Have a title, one headline sentence and then one to three sentences that give some context and detail like this: 
+                                Have a title, one headline sentence and then one or two sentences that give some context and details.
+                                The text should be easy to read and in high quality, but simple english, like news agencies would write it.
+                                You respond in the following json format: 
                                 {{
                                     "headline": "Criticism of additional US tariffs on imported cars",
                                     "entry_sentence": "The USA has announced additional tariffs of 25% on car imports."
