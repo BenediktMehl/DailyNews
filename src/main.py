@@ -40,7 +40,7 @@ class NewsPostOrchestrator:
         today_date_formatted = datetime.now().strftime("%Y-%m-%d")
         dir = f"posts/{today_date_formatted}"
 
-        #self.create_topics(dir)
+        self.create_topics(dir)
         self.create_post_and_image(dir)
         asyncio.run(send_post_to_telegram(dir))
 
