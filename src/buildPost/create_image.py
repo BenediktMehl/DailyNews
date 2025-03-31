@@ -28,19 +28,18 @@ def create_image(news_topics, output_dir):
         fill=(50, 50, 50)
     )
 
-    left_padding = 80
-    top_padding = 80
+    padding = 60
 
     bold_font = ImageFont.truetype("assets/arialBold.ttf", 70) 
-    draw.text((left_padding, top_padding), "Your Daily News Update", fill="white", font=bold_font)
+    draw.text((padding, padding), "Your Daily News Update", fill="white", font=bold_font)
 
     date_font = ImageFont.truetype("assets/arial.ttf", 40)
     today_date = datetime.now().strftime("%Y-%m-%d")
-    draw.text((left_padding, top_padding + 80), today_date, fill="white", font=date_font)
+    draw.text((padding, padding + 80), today_date, fill="white", font=date_font)
 
     headline_font = ImageFont.truetype("assets/arial.ttf", 50) 
-    max_width = 31
-    text_start_offset = left_padding + 80
+    max_width = 35
+    text_start_offset = padding + 80
     headline_section_top_offset = headline_section_top + 100
 
     with Pilmoji(img) as pilmoji:
@@ -51,7 +50,7 @@ def create_image(news_topics, output_dir):
             wrapped_headline = textwrap.fill(headline, width=max_width)
 
             pilmoji.text(
-                (left_padding, headline_section_top_offset + i * 160), 
+                (padding, headline_section_top_offset + i * 160), 
                 icon,
                 fill="white",
                 font=headline_font
@@ -64,10 +63,9 @@ def create_image(news_topics, output_dir):
                 font=headline_font
             )
 
-    margin = 20
     img.paste(
         logo,
-        (img.width - logo.width - margin, img.height - logo.height - margin),
+        (img.width - logo.width - padding + 40, img.height - logo.height - padding + 20),
         logo
     )
 

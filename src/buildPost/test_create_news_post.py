@@ -21,7 +21,7 @@ class TestCreateNewsPost(unittest.TestCase):
         ]
 
         output_dir = f"posts/test-10-10-2010"
-        output_file_path = f"{output_dir}/text.txt"
+        output_file_path = f"{output_dir}/post.txt"
 
         os.makedirs(output_dir, exist_ok=True)
 

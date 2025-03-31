@@ -10,27 +10,38 @@ from buildPost.create_news_post import create_news_post
 from buildPost.create_image import create_image
 from datetime import datetime
 import os
+import json
 
 
 class NewsPostOrchestrator:
-    def create_post_from_top_news(self, dir):
+    def create_topics(self, dir):
         logging.basicConfig(level=logging.INFO)
-
-        top_news = fetch_top_news()
-        contents = fetch_html_contents(top_news, 5)
-        summaries = create_news_topics(contents)
-        choose_icons(summaries)
-
         os.makedirs(dir, exist_ok=True)
 
-        create_news_post(summaries, top_news, dir)
-        create_image(summaries, dir)
+        topics = []
+        topics = fetch_top_news(topics)
+        topics = fetch_html_contents(topics)
+        topics = create_news_topics(topics)
+        topics = choose_icons(topics)
+
+        topics_file_path = f"{dir}/topics.json"
+        with open(topics_file_path, "w") as json_file:
+            json.dump(topics, json_file, indent=4)
+
+    def create_post(self, dir):
+        topics_file_path = f"{dir}/topics.json"
+        with open(topics_file_path, "r") as json_file:
+            topics = json.load(json_file)
+
+        create_news_post(topics, dir)
+        create_image(topics, dir)
 
     def send_and_create_post(self):
         today_date_formatted = datetime.now().strftime("%Y-%m-%d")
         dir = f"posts/{today_date_formatted}"
 
-        self.create_post_from_top_news(dir)
+        self.create_topics(dir)
+        self.create_post(dir)
         asyncio.run(send_post_to_telegram(dir))
 
 

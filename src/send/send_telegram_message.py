@@ -11,7 +11,7 @@ user_id = os.getenv('USER_ID')
 
 
 async def send_post_to_telegram(input_dir):
-    file_text_path = f"{input_dir}/text.txt"
+    file_text_path = f"{input_dir}/post.txt"
     with open(file_text_path, 'r') as file:
         text = file.read()
 

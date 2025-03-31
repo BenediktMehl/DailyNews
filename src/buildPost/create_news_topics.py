@@ -1,5 +1,6 @@
 import logging
 import json
+from pydoc import text
 import openai
 import os
 from dotenv import load_dotenv
@@ -7,26 +8,27 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def create_news_topics(texts: list) -> list:
-    news_topics = []
+def create_news_topics(topics: list, max_number_of_news = 3) -> list:
+    topics_with_ai = []
     number_of_summaries = 0
-    for text in texts:
-        if len(text) < 1000 or len(text) > 15000:
-            logging.warning(f"AI Interaction: Text length is not valid: {len(text)} characters")
+    for topic in topics:
+        content = topic['content']
+        if len(content) < 1000 or len(content) > 15000:
+            logging.warning(f"AI Interaction: Text length is not valid: {len(content)} characters")
             continue
-        if number_of_summaries >= 3:
+        if number_of_summaries >= max_number_of_news:
             break
-        topic = create_news_topic(text)
-        if topic is None:
+        topic_ai = create_news_topic(topic)
+        if topic_ai is None:
             logging.warning(f"AI Interaction: Failed to create topic")
         else:
-            logging.info(f"AI Interaction: Created topic: {topic}")
+            logging.info(f"AI Interaction: Created topic: {topic_ai}")
             number_of_summaries += 1
-            news_topics.append(topic)
-    return news_topics
+            topics_with_ai.append(topic_ai)
+    return topics_with_ai
 
 
-def create_news_topic(text: str) -> str:
+def create_news_topic(topic: dict) -> dict:
     logging.basicConfig(level=logging.INFO)
     logging.info("Fetch: Fetching API key and base URL from environment variables")
     api_key = os.getenv("OPENAI_API_KEY")
@@ -54,7 +56,7 @@ def create_news_topic(text: str) -> str:
                                     "detail": "They are to come into force on April 2 and apply to all cars not produced in the USA."
                                 }}
                                 Dont put any links or references into the summary. If the given text does not contain a summarizable text, simply return 'null'. 
-                                This is the text: {text}
+                                This is the text: {topic['content']}
                             """
             }
         ]
@@ -72,7 +74,7 @@ def create_news_topic(text: str) -> str:
         if "headline" not in json_response or "entry_sentence" not in json_response or "detail" not in json_response:
             logging.warning(f"AI Interaction: JSON object does not contain required fields: {json_response}")
             return None
-        return json_response
+        return topic | json_response
     except Exception as e:
         logging.error(f"AI Interaction: Failed to parse JSON: {e}")
         return None

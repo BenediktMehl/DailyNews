@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🎨 *Sweden has officially designated the demoscene as national UNESCO heritage.* This recognition follows an application submitted last year and is part of a broader initiative to globally acknowledge the demoscene as an important digital culture. https://www.goto80.com/the-demoscene-as-a-unesco-heritage-in-sweden
+
+🤖 *Google has launched its new AI model, Gemini 2.5 Pro, claiming it performs better in coding tasks than the existing model, Claude 3.7 Sonnet.* In various coding tests, Gemini 2.5 Pro surpassed Claude 3.7 by delivering accurate results with a larger context window, making it the preferred choice for developers. https://composio.dev/blog/gemini-2-5-pro-vs-claude-3-7-sonnet-coding-comparison/
+
+🔒 *Oracle is under scrutiny following claims of a serious cybersecurity incident affecting its services.* A threat actor has allegedly breached Oracle's systems and posted sensitive customer data online, prompting demands for transparency from the company. https://doublepulsar.com/oracle-attempt-to-hide-serious-cybersecurity-incident-from-customers-in-oracle-saas-service-9231c8daff4a
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!

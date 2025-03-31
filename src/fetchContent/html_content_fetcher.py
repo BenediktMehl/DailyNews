@@ -3,9 +3,11 @@ import logging
 from time import sleep
 
 
-def fetch_html_contents(news_items, number_of_news=-1):
+def fetch_html_contents(topics, max_number_of_contents=3):
     contents = list()
-    for item in news_items:
+    for item in topics:
+        if len(contents) >= max_number_of_contents:
+            break
         url = item['url']
         raw_text = _fetch_raw_text(url)
         logging.info(f"Fetch: Fetched raw text with {len(raw_text)} characters")
@@ -13,10 +15,12 @@ def fetch_html_contents(news_items, number_of_news=-1):
             logging.warning(f"Fetch: Raw text: {raw_text} is too short, skipping URL: {url}")
             continue
         cleaned_text = _clean_text(raw_text)
-        contents.append((f"Title: {item['title']}\nContent:\n{cleaned_text}"))
-        number_of_news -= 1
-        if number_of_news == 0:
-            break
+        content_item = {
+            'title': item['title'],
+            'url': url,
+            'content': cleaned_text
+        }
+        contents.append(content_item)
     return contents
 
 
