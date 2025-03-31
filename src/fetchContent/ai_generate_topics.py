@@ -1,6 +1,5 @@
 import logging
 import json
-from pydoc import text
 import openai
 import os
 from dotenv import load_dotenv

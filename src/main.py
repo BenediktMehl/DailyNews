@@ -1,13 +1,13 @@
 from calendar import c
 import logging
 import asyncio
-from fetchContent.llm_icon_chooser import choose_icons
+from fetchContent.assign_icons import choose_icons
 from send.send_telegram_message import send_post_to_telegram
-from fetchContent.rss_news_fetcher import fetch_top_news
-from fetchContent.html_content_fetcher import fetch_html_contents
-from fetchContent.create_news_topics import create_news_topics
-from buildPost.create_news_post import create_news_post
-from buildPost.create_image import create_image
+from fetchContent.fetch_urls import fetch_top_news
+from fetchContent.fetch_html_content import fetch_html_contents
+from fetchContent.ai_generate_topics import create_news_topics
+from buildPost.generate_post import create_news_post
+from buildPost.generate_image import create_image
 from datetime import datetime
 import os
 import json

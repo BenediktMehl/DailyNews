@@ -1,4 +1,4 @@
-from create_image import create_image
+from buildPost.generate_image import create_image
 import unittest
 import os
 from datetime import datetime

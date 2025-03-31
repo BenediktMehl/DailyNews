@@ -1,4 +1,4 @@
-from create_news_post import create_news_post
+from buildPost.generate_post import create_news_post
 import unittest
 import os
 from datetime import datetime
