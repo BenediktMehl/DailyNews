@@ -25,12 +25,12 @@ class TestFetchHTMLContent(unittest.TestCase):
 
     def test_fetch_html_contents_short_raw_text(self):
         topics = [
-            {'title': 'No Content', 'url': 'https://httpbin.org/status/404'},  # URL that returns a 404 error
+            {'title': 'No Content', 'url': 'https://httpbin.org/status/404'},
         ]
 
         contents = fetch_html_contents(topics)
 
-        self.assertEqual(len(contents), 0)  # No content should be added due to invalid response
+        self.assertEqual(len(contents), 0)
 
 
 if __name__ == '__main__':
