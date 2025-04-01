@@ -1,46 +1,53 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageColor
 from datetime import datetime
 from pilmoji import Pilmoji
-import textwrap 
+import textwrap
 
 
 def create_image(news_topics, output_dir):
     logo_path = 'assets/logo_no_background.png'
 
     logo = Image.open(logo_path)
-    logo_size = 150 
+    logo_size = 150
     logo = logo.resize((logo_size, logo_size))
 
-    img_size = 1024 
+    img_size = 1024
     extra_top_padding = 40
-    img = Image.new('RGB', (img_size, img_size + 40 + extra_top_padding), color=(128, 0, 128))
+    top_section_height = 330
+    gradient_height = 10
+    img = Image.new('RGB', (img_size, img_size + extra_top_padding), color=(50, 50, 50))
     draw = ImageDraw.Draw(img)
 
-    top_gradient_height = 340 
-    for x in range(img_size):
-        r = 123 + (34 - 123) * x / img_size
-        g = 6 + (6 - 6) * x / img_size
-        b = 244 + (63 - 244) * x / img_size
-        draw.line([(x, 0), (x, top_gradient_height)], fill=(int(r), int(g), int(b)))
-
-    headline_section_top = top_gradient_height
     draw.rectangle(
-        [(0, headline_section_top), (img_size, img_size+40)],
-        fill=(50, 50, 50)
+        [(0, top_section_height + gradient_height), (img_size, img_size + extra_top_padding)],
+        fill=(200, 200, 200)
     )
 
+    gradient_colors = ["#080573", "#570691", "#bf0be3", "#ffffff"]
+    num_colors = len(gradient_colors) - 1
+    for x in range(img_size):
+        ratio = x / img_size
+        segment = int(ratio * num_colors)
+        segment_ratio = (ratio * num_colors) - segment
+        r1, g1, b1 = ImageColor.getrgb(gradient_colors[segment])
+        r2, g2, b2 = ImageColor.getrgb(gradient_colors[segment + 1])
+        r = int(r1 + (r2 - r1) * segment_ratio)
+        g = int(g1 + (g2 - g1) * segment_ratio)
+        b = int(b1 + (b2 - b1) * segment_ratio)
+        draw.line([(x, top_section_height), (x, top_section_height + gradient_height)], fill=(r, g, b))
+
     padding = 60
-    bold_font = ImageFont.truetype("assets/arialBold.ttf", 70) 
-    draw.text((padding, padding+ extra_top_padding), "Your Daily News Update", fill="white", font=bold_font)
+    bold_font = ImageFont.truetype("assets/arialBold.ttf", 70)
+    draw.text((padding, padding + extra_top_padding), "Your Daily News Update", fill="white", font=bold_font)
 
     date_font = ImageFont.truetype("assets/arial.ttf", 40)
     today_date = datetime.now().strftime("%Y-%m-%d")
     draw.text((padding, padding + 80 + extra_top_padding), today_date, fill="white", font=date_font)
 
-    headline_font = ImageFont.truetype("assets/arial.ttf", 50) 
+    headline_font = ImageFont.truetype("assets/arial.ttf", 50)
     max_width = 35
     text_start_offset = padding + 80
-    headline_section_top_offset = headline_section_top + 100 + extra_top_padding
+    news_section_start = top_section_height + gradient_height + extra_top_padding + 50
 
     with Pilmoji(img) as pilmoji:
         for i, topic in enumerate(news_topics):
@@ -50,34 +57,33 @@ def create_image(news_topics, output_dir):
             wrapped_headline = textwrap.fill(headline, width=max_width)
 
             pilmoji.text(
-                (padding, headline_section_top_offset + i * 160), 
+                (padding, news_section_start + i * 160),
                 icon,
-                fill="white",
+                fill="black",
                 font=headline_font
             )
 
             pilmoji.text(
-                (text_start_offset, headline_section_top_offset + i * 160), 
+                (text_start_offset, news_section_start + i * 160),
                 wrapped_headline,
-                fill="white",
+                fill="black",
                 font=headline_font
             )
 
     img.paste(
         logo,
-        (img_size - logo.width - padding + 40, img_size - logo.height - padding + 40 + extra_top_padding),
+        (img_size - logo.width - padding + 40, img_size - logo.height - padding + 50),
         logo
     )
 
-    watermark_font = ImageFont.truetype("assets/arial.ttf", 25) 
+    watermark_font = ImageFont.truetype("assets/arial.ttf", 25)
     watermark_text = "@Daily Software Development WhatsApp Channel"
     draw.text(
-        (40, img_size+45),
+        (padding, img_size + extra_top_padding - 30),
         watermark_text,
         fill="white",
         font=watermark_font
     )
-
 
     file_path = f"{output_dir}/image.png"
     img.save(file_path)

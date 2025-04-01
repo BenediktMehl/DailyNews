@@ -1,7 +1,6 @@
-from buildPost.generate_image import create_image
+from generate_image import create_image
 import unittest
 import os
-from datetime import datetime
 from PIL import Image
 
 class TestNewsImageCreation(unittest.TestCase):
