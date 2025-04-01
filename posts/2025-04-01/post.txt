@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🎨 *Sweden has officially recognized the demoscene as a national UNESCO-heritage following an application submitted last year.* This recognition is part of the international Art of Coding initiative, aiming to elevate the demoscene to global UNESCO heritage status, celebrating its unique consistency and creativity in the digital world. https://www.goto80.com/the-demoscene-as-a-unesco-heritage-in-sweden
+
+💵 *The Guardian US reports strong growth in reader donations, anticipating $44 million this year.* With 60% of its revenue coming from voluntary contributions, the publication's reader-supported model is gaining traction amid rising interest in reliable news. https://nymag.com/intelligencer/article/how-the-guardian-us-flourishes-without-a-paywall.html
+
+🎨 *Chrome has introduced a new, customizable <select> element that enhances web design.* From Chrome version 135, developers can now include rich HTML content within <select> options, allowing for improved styling and customization. https://developer.chrome.com/blog/a-customizable-select
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!
