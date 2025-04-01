@@ -1,14 +1,14 @@
 import unittest
-from rss_news_fetcher import RSSNewsFetcher
+from fetch_urls import fetch_top_news
 
-class TestRSSNewsFetcher(unittest.TestCase):
-    def setUp(self):
-        self.api_url = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
-        self.news_fetcher = RSSNewsFetcher(self.api_url)
 
-    def test_fetch_news(self):
-        news_items = self.news_fetcher.fetch_news()
-        self.assertTrue(len(news_items) > 0, "No news items retrieved from RSS feed")
+class TestFetchTopNews(unittest.TestCase):
+    def test_fetch_top_news(self):
+        topics = [{'title': 'Existing Topic', 'url': 'https://example.com'}]
+        news_items = fetch_top_news(topics)
+        self.assertTrue(len(news_items) > len(topics))
+        self.assertTrue(all('title' in item and 'url' in item for item in news_items))
+
 
 if __name__ == '__main__':
     unittest.main()
