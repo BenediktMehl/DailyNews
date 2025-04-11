@@ -47,7 +47,7 @@ def create_news_topic(topic: dict) -> dict:
                 "role": "user",
                 "content": f"""
                                 Have a title, one headline sentence and then one or two sentences that give some context and details.
-                                The text should be easy to read and in high quality, but simple english, like news agencies would write it.
+                                The text should be very short (like the example below), easy to read and in high quality, but simple english, like news agencies would write it.
                                 You respond in the following json format: 
                                 {{
                                     "headline": "Criticism of additional US tariffs on imported cars",
