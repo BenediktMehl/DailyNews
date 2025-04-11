@@ -20,8 +20,8 @@ class NewsPostOrchestrator:
 
         topics = []
         topics = fetch_top_news(topics)
-        topics = fetch_html_contents(topics)
-        topics = create_news_topics(topics)
+        topics = fetch_html_contents(topics, 5)
+        topics = create_news_topics(topics, 3)
         topics = choose_icons(topics)
 
         topics_file_path = f"{dir}/topics.json"
