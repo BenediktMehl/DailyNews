@@ -8,7 +8,8 @@ load_dotenv()
 
 def choose_icons(news_topics: dict):
     for topic in news_topics:
-        topic["icon"] = choose_icon(topic["entry_sentence"])
+        #topic["icon"] = choose_icon(topic["entry_sentence"])
+        topic["icon"] = "🟣"
     return news_topics
 
 def choose_icon(summary: str) -> str:
