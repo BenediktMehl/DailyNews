@@ -72,8 +72,10 @@ def create_image(news_topics, output_dir):
 
     logo_position = (img_size - logo.width - padding + 40, img_size - logo.height - padding + 50)
 
-    # Create a fading circle behind the logo
-    circle_diameter = logo_size + 0
+    gradient_colors_for_circle = gradient_colors[:-1] 
+    num_colors_for_circle = len(gradient_colors_for_circle) - 1
+
+    circle_diameter = logo_size
     circle_radius = circle_diameter // 2
     circle_center = (logo_position[0] + logo.width // 2, logo_position[1] + logo.height // 2)
     for y in range(circle_diameter):
@@ -83,11 +85,14 @@ def create_image(news_topics, output_dir):
             distance = (dx**2 + dy**2)**0.5
             if distance <= circle_radius:
                 fade_ratio = distance / circle_radius
-                r1, g1, b1 = (0, 0, 0)  # Black
-                r2, g2, b2 = (68, 0, 173)  # Purple
-                r = int(r1 + (r2 - r1) * fade_ratio)
-                g = int(g1 + (g2 - g1) * fade_ratio)
-                b = int(b1 + (b2 - b1) * fade_ratio)
+                gradient_position = fade_ratio * num_colors_for_circle
+                segment = int(gradient_position)
+                segment_ratio = gradient_position - segment
+                r1, g1, b1 = ImageColor.getrgb(gradient_colors_for_circle[segment])
+                r2, g2, b2 = ImageColor.getrgb(gradient_colors_for_circle[min(segment + 1, num_colors_for_circle)])
+                r = int(r1 + (r2 - r1) * segment_ratio)
+                g = int(g1 + (g2 - g1) * segment_ratio)
+                b = int(b1 + (b2 - b1) * segment_ratio)
                 draw.point((circle_center[0] - circle_radius + x, circle_center[1] - circle_radius + y), fill=(r, g, b))
 
     img.paste(logo, logo_position, logo)
