@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🟣 *A blog discusses advanced SVG methods for creating an interactive Table of Contents (ToC).* The author explains how to render the ToC on the server while ensuring it remains functional and animated on the client side, utilizing SVG for dynamic visual elements. https://fuma-nama.vercel.app/blog/svg-art
+
+🟣 *GrapheneOS has launched its first experimental release for the Pixel 9a device.* Both command line and web install options are available, and the project is seeking user feedback on functionality. https://grapheneos.social/@GrapheneOS/114327666433966529
+
+🟣 *Jeff Geerling discovered an innovative timing standard called BPS at the NAB Show.* BPS may serve as a reliable terrestrial backup to GPS, which is crucial for various sectors including media and aviation. https://www.jeffgeerling.com/blog/2025/bps-gps-alternative-nobodys-heard
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!
