@@ -20,7 +20,7 @@ class NewsPostOrchestrator:
 
         topics = []
         topics = fetch_top_news(topics)
-        topics = fetch_html_contents(topics, 5)
+        topics = fetch_html_contents(topics, 7)
         topics = create_news_topics(topics, 3)
         topics = choose_icons(topics)
 

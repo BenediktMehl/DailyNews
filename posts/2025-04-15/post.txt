@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🟣 *Geoffrey Litt has created an AI assistant named Stevens using a single SQLite table and cron jobs.* Stevens sends daily updates to his family, including weather forecasts and calendar schedules, making it a practical tool for organizing their day. https://www.geoffreylitt.com/2025/04/12/how-i-made-a-useful-ai-assistant-with-one-sqlite-table-and-a-handful-of-cron-jobs
+
+🟣 *DeepSeek has announced the open-sourcing of its internal inference engine to benefit the AI community.* The team plans to collaborate with existing open-source projects by contributing standalone features and optimizations, despite facing challenges like codebase divergence and maintenance bandwidth. https://github.com/deepseek-ai/open-infra-index/tree/main/OpenSourcing_DeepSeek_Inference_Engine
+
+🟣 *A federal antitrust trial against Meta started on Monday over its acquisitions of WhatsApp and Instagram.* The Federal Trade Commission claims Meta illegally monopolized the social networking market, while Meta argues the acquisitions were necessary for competition. https://www.axios.com/pro/tech-policy/2025/04/14/ftc-meta-antitrust-trial-kicks-off-in-federal-court
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!

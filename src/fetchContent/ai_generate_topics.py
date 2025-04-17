@@ -12,7 +12,7 @@ def create_news_topics(topics: list, max_number_of_news = 3) -> list:
     number_of_summaries = 0
     for topic in topics:
         content = topic['content']
-        if len(content) < 1000 or len(content) > 15000:
+        if len(content) < 1000 or len(content) > 20000:
             logging.warning(f"AI Interaction: Text length is not valid: {len(content)} characters")
             continue
         if number_of_summaries >= max_number_of_news:
@@ -21,7 +21,7 @@ def create_news_topics(topics: list, max_number_of_news = 3) -> list:
         if topic_ai is None:
             logging.warning(f"AI Interaction: Failed to create topic")
         else:
-            logging.info(f"AI Interaction: Created topic: {topic_ai}")
+            logging.info(f"AI Interaction: Created topic: {topic_ai['title']}")
             number_of_summaries += 1
             topics_with_ai.append(topic_ai)
     return topics_with_ai

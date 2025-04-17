@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🟣 *Tove Jansson’s Moomin stories, now 80 years old, contain deeper messages about apocalypse and displacement.* Originally created during the Winter War in Finland, the tales reflect themes of loss and searching for home, contrasting their cute exterior with serious undertones. https://www.newstatesman.com/culture/books/2025/04/dark-side-of-the-moomins-tove-jansson
+
+🟣 *Fennel is a programming language that operates on the Lua runtime.* It simplifies Lua's syntax and helps avoid common pitfalls while keeping the powerful features of Lua intact. https://fennel-lang.org/rationale
+
+🟣 *Tech enthusiast Loganius has transitioned to a Mac by purchasing a PowerMac G4 MDD.* He details the challenges and joys of repairing the vintage computer, including fan issues and sourcing parts. https://loganius.org/2025/04/i-bought-a-mac/
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!

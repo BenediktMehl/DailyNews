@@ -1,0 +1,11 @@
+Good morning from the Developer News Editorial Team! ☕
+Here are this morning’s top updates:
+
+🟣 *Filip Hracek has introduced an early version of an uncertainty calculator designed to simplify statistics.* Users can input regular numbers or ranges to better assess uncertain financial situations, allowing for more informed decision-making. https://filiph.github.io/unsure/
+
+🟣 *The CA/Browser Forum has voted to shorten TLS certificate lifetimes to a maximum of 47 days.* The new rule will be phased in over the next few years, with the first changes starting in March 2026, emphasizing the need for automation in certificate management. https://www.digicert.com/blog/tls-certificate-lifetimes-will-officially-reduce-to-47-days
+
+🟣 *A new typeface called Kermit has been created to help children read more easily.* Designed with features to support children with dyslexia, Kermit focuses on legibility and fun, aiming to boost young readers' confidence and engagement. https://microsoft.design/articles/introducing-kermit-a-typeface-for-kids/
+
+Have a great day! 🚀
+Stay informed—hit the bell 🔔 so you never miss an update!
