@@ -38,7 +38,7 @@ marshmallow==3.26.1
 mpmath==1.3.0
 multidict==6.2.0
 mypy-extensions==1.0.0
-networkx==3.4.2
+networkx==3.4
 numpy==1.26.4
 openai==1.69.0
 orjson==3.10.16
