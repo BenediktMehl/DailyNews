@@ -22,16 +22,17 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-
+          
       - name: List test files
         run: find src -name "test_*.py" -type f
 
       - name: Show directory structure
         run: find src -type f | sort
 
-      - name: Fix import paths
+      - name: Create __init__.py files for proper imports
         run: |
-          echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+          find src -type d -exec touch {}/__init__.py \;
+          find src -name "__init__.py" | sort
 
       - name: Run individual tests
         run: |

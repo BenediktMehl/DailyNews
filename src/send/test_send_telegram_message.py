@@ -1,6 +1,6 @@
 import unittest
 import asyncio
-from send_telegram_message import send_post_to_telegram
+from src.send.send_telegram_message import send_post_to_telegram
 
 class TestSendTelegramMessage(unittest.TestCase):
     def test_send_post_to_telegram(self):
