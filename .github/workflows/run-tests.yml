@@ -26,5 +26,16 @@ jobs:
       - name: List test files
         run: find src -name "test_*.py" -type f
 
-      - name: Run tests with verbose output
-        run: python3 -m unittest discover -v -s src -p 'test_*.py'
+      - name: Show directory structure
+        run: find src -type f | sort
+
+      - name: Fix import paths
+        run: |
+          echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+
+      - name: Run individual tests
+        run: |
+          for test_file in $(find src -name "test_*.py" -type f); do
+            echo "Running $test_file"
+            python3 -m unittest $test_file
+          done
