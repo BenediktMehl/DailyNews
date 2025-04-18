@@ -23,5 +23,8 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
-        run: python3 -m unittest discover -s src -p 'test_*.py'
+      - name: List test files
+        run: find src -name "test_*.py" -type f
+
+      - name: Run tests with verbose output
+        run: python3 -m unittest discover -v -s src -p 'test_*.py'
