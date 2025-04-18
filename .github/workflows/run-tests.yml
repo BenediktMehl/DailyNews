@@ -22,19 +22,11 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: List test files
         run: find src -name "test_*.py" -type f
 
-      - name: Show directory structure
-        run: find src -type f | sort
-
-      - name: Create __init__.py files for proper imports
-        run: |
-          find src -type d -exec touch {}/__init__.py \;
-          find src -name "__init__.py" | sort
-
-      - name: Run individual tests
+      - name: Crname: Run individual tests
         run: |
           for test_file in $(find src -name "test_*.py" -type f); do
             echo "Running $test_file"
