@@ -26,7 +26,16 @@ jobs:
 
       - name: Run individual tests
         run: |
+          fail=0
           for test_file in $(find src -name "test_*.py" -type f); do
             echo "Running $test_file"
-            python3 -m unittest $test_file
+            python3 -m unittest $test_file || {
+              echo "Test $test_file failed, but continuing with other tests"
+              fail=1
+            }
           done
+          
+          if [ $fail -ne 0 ]; then
+            echo "Some tests failed! Check the logs above."
+            exit 1
+          fi
