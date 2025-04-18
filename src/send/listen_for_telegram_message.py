@@ -1,6 +1,6 @@
 import asyncio
-import telegram # type: ignore
-from dotenv import load_dotenv # type: ignore
+import telegram
+from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env file

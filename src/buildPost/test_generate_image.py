@@ -1,4 +1,4 @@
-from generate_image import create_image
+from src.buildPost.generate_image import create_image
 import unittest
 import os
 from PIL import Image

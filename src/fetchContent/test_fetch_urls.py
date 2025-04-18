@@ -1,5 +1,5 @@
 import unittest
-from fetch_urls import fetch_top_news
+from src.fetchContent.fetch_urls import fetch_top_news
 
 
 class TestFetchTopNews(unittest.TestCase):

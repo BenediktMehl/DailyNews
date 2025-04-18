@@ -1,8 +1,7 @@
 import logging
-from telegram import Bot  # type: ignore
-from dotenv import load_dotenv  # type: ignore
+from telegram import Bot
+from dotenv import load_dotenv 
 import os
-from datetime import datetime
 
 load_dotenv()
 

@@ -1,5 +1,5 @@
 import unittest
-from fetchContent.assign_icons import choose_icons
+from src.fetchContent.assign_icons import choose_icons
 
 class TestCreateNewsSummary(unittest.TestCase):
     def test_create_news_summary(self):

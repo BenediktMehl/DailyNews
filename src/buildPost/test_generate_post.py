@@ -1,7 +1,6 @@
-from buildPost.generate_post import create_news_post
+from src.buildPost.generate_post import create_news_post
 import unittest
 import os
-from datetime import datetime
 
 
 class TestCreateNewsPost(unittest.TestCase):

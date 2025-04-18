@@ -1,5 +1,5 @@
 import unittest
-from fetch_html_content import fetch_html_contents
+from src.fetchContent.fetch_html_content import fetch_html_contents
 
 
 class TestFetchHTMLContent(unittest.TestCase):

@@ -1,4 +1,4 @@
-from fetchContent.ai_generate_topics import create_news_topic
+from src.fetchContent.ai_generate_topics import create_news_topic
 import unittest
 
 
