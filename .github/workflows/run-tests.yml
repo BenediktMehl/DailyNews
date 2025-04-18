@@ -22,11 +22,9 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -m playwright install
 
-      - name: List test files
-        run: find src -name "test_*.py" -type f
-
-      - name: Crname: Run individual tests
+      - name: Run individual tests
         run: |
           for test_file in $(find src -name "test_*.py" -type f); do
             echo "Running $test_file"
