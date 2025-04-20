@@ -13,9 +13,21 @@ __pypackages__/
 
 # Environments
 .env
+.private
 
 .DS_Store
 
 bin/
 include/
 lib/
+
+# Terraform-related files
+.terraform/
+.terraform.lock.hcl
+
+# Python-related files
+__pycache__/
+*.pyc
+
+# Deployment artifacts
+*.zip
