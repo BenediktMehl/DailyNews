@@ -5,8 +5,8 @@ provider "aws" {
 resource "aws_s3_bucket" "my_bucket" {
   bucket  = "my-daily-news-bucket"
   tags    = {
-	Name          = "MyS3Bucket"
-	Environment    = "Production"
+    Name          = "MyS3Bucket"
+    Environment    = "Production"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_lambda_function" "my_lambda" {
   role          = aws_iam_role.lambda_role.arn
   handler       = "app.lambda_handler"
   runtime       = "python3.9"
-  s3_bucket     = aws_s3_bucket.my_bucket.id
+  s3_bucket     = aws_s3_bucket.my_bucket.bucket
   s3_key        = "lambda/my_python_app.zip"
-  source_code_hash = filebase64sha256("path/to/your/lambda.zip")
+  source_code_hash = filebase64sha256("lambda.zip")
 }

@@ -29,14 +29,14 @@ jobs:
 
     - name: Upload to S3
       run: |
-        aws s3 cp lambda.zip s3://my-unique-bucket-name/lambda/my_python_app.zip
+        aws s3 cp lambda.zip s3://my-daily-news-bucket/lambda/my_python_app.zip
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Deploy with Terraform
       run: |
-        terraform init
+        terraform init -backend-config="bucket=my-daily-news-bucket"
         terraform apply -auto-approve
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
