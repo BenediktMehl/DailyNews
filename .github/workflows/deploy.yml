@@ -38,6 +38,7 @@ jobs:
         rm app.py
 
     - name: Deploy Infrastructure with Terraform
+      working-directory: infrastructure
       run: |
         terraform init -backend-config="bucket=my-daily-news-bucket"
         terraform apply -auto-approve
