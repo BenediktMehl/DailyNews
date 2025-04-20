@@ -45,5 +45,5 @@ resource "aws_lambda_function" "my_lambda" {
   runtime       = "python3.9"
   s3_bucket     = aws_s3_bucket.my_bucket.bucket
   s3_key        = aws_s3_object.lambda_zip.key
-  source_code_hash = filebase64sha256("lambda.zip")
+  source_code_hash = filebase64sha256("../lambda.zip")
 }
